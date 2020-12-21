@@ -1,4 +1,4 @@
-const database = require('../db/index')
+const db = require('../db/index')
 
 const getAllUsers = async (req, res, next) => {
     try {
@@ -6,7 +6,7 @@ const getAllUsers = async (req, res, next) => {
             status: "Success",
             message: "Recieved All Users",
             body: {
-                users: await database.any("SELECT * FROM users")
+                users: await db.any("SELECT * FROM users")
             }
         })  
     } catch (error) {
@@ -25,7 +25,7 @@ const getSingleUser = async (req, res, next) => {
             status: "Success",
             message: "Recieved Single User",
             body: {
-                users: await database.any("SELECT * FROM users where id = $1", [id])
+                users: await db.any("SELECT * FROM users where id = $1", [id])
             }
         })  
     } catch (error) {
@@ -49,7 +49,7 @@ const addUser = async (req, res, next) => {
         } = req.body;
         console.log(req.body);
 
-        let user = await database.one(
+        let user = await db.one(
             "INSERT INTO users (id, password, first_name, last_name, email_address, profile_pic) VALUES ($1, $2, $3, $4, $5, $6) RETURNING *",
             [id, password, first_name, last_name, email_address, profile_pic]
         );
@@ -73,7 +73,7 @@ const addUser = async (req, res, next) => {
 const deleteUser = async (req, res, next) => {
     try {
         let { id } = req.params;
-        let user = await database.one("DELETE FROM users WHERE id = $1 RETURNING *", id);
+        let user = await db.one("DELETE FROM users WHERE id = $1 RETURNING *", id);
         res.status(200).json({
             status: "Success",
             message: "User Has Been Deleted",
@@ -93,7 +93,7 @@ const deleteUser = async (req, res, next) => {
 const searchUser = async (req, res, next) => {
     try {
       let { username } = req.params;
-      let user = await database.one(
+      let user = await db.one(
         "SELECT * FROM users WHERE username = $1",
         username
       );
@@ -119,7 +119,7 @@ const searchUser = async (req, res, next) => {
     const { id } = req.params;
     const { first_name, last_name, bio, email_address } = req.body;
     try {
-      let user = await database.one(
+      let user = await db.one(
         "UPDATE users SET  first_name=$1, last_name=$2, bio=$3, email_address=$4 WHERE id=$5 RETURNING *",
         [first_name, last_name, bio, email_address, id]
       );
@@ -143,7 +143,7 @@ const searchUser = async (req, res, next) => {
     const { id } = req.params;
     const { profile_pic } = req.body;
     try {
-      let user = await database.one(
+      let user = await db.one(
         "UPDATE users SET profile_pic=$1 WHERE id=$2 RETURNING *",
         [profile_pic, id]
       );

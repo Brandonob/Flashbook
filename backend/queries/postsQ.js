@@ -1,4 +1,4 @@
-const database = require('../db/index')
+const db = require('../db/index')
 
 const getAllPosts = async (req, res, next) => {
     try {
@@ -6,7 +6,7 @@ const getAllPosts = async (req, res, next) => {
         status: "Success",
         message: "Got all Posts",
         body: {
-          posts: await database.any(
+          posts: await db.any(
             "SELECT posts.id, owner_id, post_image_url, body, first_name, last_name, profile_pic   FROM posts INNER JOIN users ON posts.owner_id = users.id ORDER BY posts.id DESC"
           )
         }
@@ -22,7 +22,7 @@ const getAllPosts = async (req, res, next) => {
               status: "Success",
         message: "Got all posts by user id: " + req.params.owner_id,
         body: {
-          posts: await database.any(
+          posts: await db.any(
             "SELECT owner_id, post_image_url, body FROM posts INNER JOIN users ON posts.owner_id = users.id WHERE posts.owner_id = $1 ORDER BY posts.id DESC",
             req.params.owner_id
           )
@@ -38,7 +38,7 @@ const getAllPosts = async (req, res, next) => {
         status: "Success",
         message: "Got single post by id: " + id,
         body: {
-          single_post: await database.any("SELECT * FROM posts WHERE id = $1", [id])
+          single_post: await db.any("SELECT * FROM posts WHERE id = $1", [id])
         }
       });
     } catch (error) {
@@ -49,7 +49,7 @@ const getAllPosts = async (req, res, next) => {
   const createPost = async (req, res, next) => {
     try {
       let { owner_id, post_image_url, body } = req.body;
-      let single_post = await database.one(
+      let single_post = await db.one(
         "INSERT INTO posts (owner_id, post_image_url, body) VALUES ($1, $2, $3) RETURNING *",
         [owner_id, post_image_url, body]
       );
@@ -67,7 +67,7 @@ const getAllPosts = async (req, res, next) => {
     try {
       let { owner_id, post_image_url, body } = req.body;
       let { id } = req.params;
-      let single_post = await database.one(
+      let single_post = await db.one(
         "UPDATE posts SET owner_id=$1, post_image_url=$2, body=$3 WHERE id = $4 RETURNING *",
         [owner_id, post_image_url, body, id]
       );
@@ -84,7 +84,7 @@ const getAllPosts = async (req, res, next) => {
   const deletePost = async (req, res, next) => {
     try {
       let { id } = req.params;
-      let single_post = await database.one(
+      let single_post = await db.one(
         "DELETE FROM posts WHERE id = $1 RETURNING *",
         id
       );
