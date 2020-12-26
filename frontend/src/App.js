@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 // import Login from './features/Login Page/Login'
 import Login from './features/Login Page/Login'
-// import DisplayHome from './features/homePage/DisplayHome'
+import Home from './features/Home Page/Home'
 // import Navbar from './features/universal/NavBar'
 import { Switch, Route } from 'react-router-dom'
 
