@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 // import Login from './features/Login Page/Login'
 import Login from './features/Login Page/Login'
 import Home from './features/Home Page/Home'
-// import Navbar from './features/universal/NavBar'
+import Navbar from './features/Navbar'
 import { Switch, Route } from 'react-router-dom'
 
 function App() {
@@ -13,6 +13,7 @@ function App() {
           <Login />
         </Route>
         <Route exact path={"/home"}>
+          <Navbar />
           <Home />
         </Route>
       </Switch>
