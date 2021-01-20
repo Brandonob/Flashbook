@@ -1,4 +1,5 @@
 import React, {useState} from 'react'
+import './CreatePost.css'
 
 const CreatePost = ({userName}) => {
     const [inputPlaceholder, setInputPlaceholder] = useState(`What's on your mind, ${userName}`);
@@ -19,11 +20,16 @@ const CreatePost = ({userName}) => {
     }
     
     return (
-        <div>
-            <form onSubmit={handleSubmit}>
-                <input type={"text"} value={body} placeholder={inputPlaceholder} onChange={(e) => setBody(e.target.value) }/>
-                <button type={"submit"}>Post</button>
-            </form>
+        <div className="createPostDiv">
+            <section>
+                <input type="text" placeholder={inputPlaceholder} />
+
+            </section>
+            <section>
+
+            </section>
+                
+            
         </div>
     )
 }

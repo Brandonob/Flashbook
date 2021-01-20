@@ -6,6 +6,7 @@ import f_marketplaceBlogo from '../Web Icons/f_marketplaceBlogo.png'
 import f_pages from '../Web Icons/f_pages.png'
 import f_watchBlogo from '../Web Icons/f_watchBlogo.png'
 import friendsLogo from '../Web Icons/friendsLogo.png'
+import './Home.css'
 
 
 

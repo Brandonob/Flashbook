@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 // import Login from './features/Login Page/Login'
 import Login from './features/Login Page/Login'
 import Home from './features/Home Page/Home'
-import Navbar from './features/Navbar'
+import Navbar from './features/Navbar/Navbar'
 import { Switch, Route } from 'react-router-dom'
 
 function App() {

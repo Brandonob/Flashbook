@@ -3,7 +3,7 @@ import { useHistory } from 'react-router-dom'
 import { useDispatch } from 'react-redux'
 import { fetchAllPosts } from '../Posts/postsSlice'
 import CreatePost from '../Posts/CreatePost'
-// import '../../css/homeCss.css'
+import './Home.css'
 import Posts from '../Posts/Posts'
 import LeftContainer from '../Home Page/LeftContainer'
 import { logout } from '../Utils/firebaseFunctions'
@@ -34,9 +34,8 @@ const Home = () => {
                 <Posts/>
             </div>
             <div className="rightSide">
+                <h1>Contacts</h1>
                 <button onClick={handleClick}>Log Out</button>
-                <h5>Birthdays</h5>
-                <h5>Friends</h5>
             </div>
         </div>
     )

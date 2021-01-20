@@ -4,6 +4,7 @@ import { useDispatch } from 'react-redux'
 // import { addUser } from '../users/usersSlice'
 import { login } from '../Utils/firebaseFunctions'
 import './Login.css'
+import SignupForm from './SignupForm'
 
 const Login = () => {
     const [email, setEmail] = useState("");
@@ -11,6 +12,8 @@ const Login = () => {
     const [errMessage, setErrMessage] = useState("")
     const history = useHistory();
     const dispatch = useDispatch();
+    const [showDiv, setShowDiv] = useState(false);
+
 
 
     const handleSubmit = async (e) => {
@@ -27,6 +30,12 @@ const Login = () => {
 
     }
 
+    const handleClick = (e) => {
+        e.preventDefault();
+
+        setShowDiv(true)
+    }
+
     return (
         <div className="loginMain">
             <div className="loginText"> 
@@ -40,9 +49,16 @@ const Login = () => {
                     <button id="loginB" >Log In</button>
                 </form>  
                 <div className="signupButton">
-                    <button className="signupB">Create New Account</button>
+                    <button onClick={handleClick} className="signupB">Create New Account</button>
                 </div>
             </div>
+            {showDiv ? (
+                <div className="signupDiv" > 
+                    <SignupForm setShowDiv={setShowDiv}/>
+                </div>
+            ) : null}
+           
+           
         </div>
     )
 }
