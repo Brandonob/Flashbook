@@ -4,7 +4,7 @@
 
 Built with React.js, Node.js with Express, and PostgreSQL.
 
-![Flashbookss](./Desktop/Flashbookss.png)
+![Flashbook Login](./ReadMeImgs/Flashbookss.png)
 
 
 ## Features
