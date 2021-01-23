@@ -1,10 +1,10 @@
 # Flashbook
 
-Flashbook is a Full Stack Web App that is a remake of Facebook. Here users are able to sign up to our community, share their thoughts, and interact with other users and posts.
+**Flashbook** is a Full Stack Web App that is a remake of Facebook. Here users are able to sign up to our community, share their thoughts, and interact with other users and posts.
 
 Built with React.js, Node.js with Express, and PostgreSQL.
 
-![Flashbookss](./Desktop/Flashbookss)
+![Flashbookss](./Desktop/Flashbookss.png)
 
 
 ## Features
