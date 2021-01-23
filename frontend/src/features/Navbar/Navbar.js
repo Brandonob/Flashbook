@@ -16,6 +16,7 @@ import f_watchimgD from '../Nav Icons/f_watchimgD.png'
 import f_watchimgL from '../Nav Icons/f_watchimgL.png'
 import { getAPI } from '../Utils/Util'
 import './Navbar.css'
+import Avatar from '@material-ui/core/Avatar'
 
 
 
@@ -71,6 +72,10 @@ const NavBar = () => {
             </div>
 
             <div className="right">
+                <section className="userSection">
+                    <Avatar alt="John Doe" src="">J</Avatar>
+                    <p>John Doe</p>
+                </section>
                 <section className="circleDiv" >
                     <img src={f_plusimgL} alt="" style={{height: "60px"}}/>
                 </section>

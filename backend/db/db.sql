@@ -1,7 +1,7 @@
--- DROP DATABASE IF EXISTS flashbook_db;
--- CREATE DATABASE flashbook_db;
+DROP DATABASE IF EXISTS flashbook_db;
+CREATE DATABASE flashbook_db;
 
--- \c flashbook_db;
+\c flashbook_db;
 
 DROP TABLE IF EXISTS users;
 DROP TABLE IF EXISTS posts;
@@ -43,10 +43,10 @@ CREATE TABLE comments
     content VARCHAR
 );
 
--- INSERT INTO users
---     (password, first_name, last_name, email_address, profile_pic, bio)
--- VALUES
---     ('secret', 'Brandon', 'Brown', 'bb@pursuit.org', 'uploads/saltflats.JPG', 'Hi Welcome to my page');
+INSERT INTO users
+    (password, first_name, last_name, email_address, profile_pic, bio)
+VALUES
+    ('secret', 'Brandon', 'Brown', 'bb@pursuit.org', 'uploads/saltflats.JPG', 'Hi Welcome to my page');
 
 -- INSERT INTO posts
 --     (owner_id, post_image_url, body)

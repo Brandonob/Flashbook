@@ -1,5 +1,6 @@
 import React, {useState} from 'react'
 import './CreatePost.css'
+import Avatar from '@material-ui/core/Avatar'
 
 const CreatePost = ({userName}) => {
     const [inputPlaceholder, setInputPlaceholder] = useState(`What's on your mind, ${userName}`);
@@ -21,12 +22,12 @@ const CreatePost = ({userName}) => {
     
     return (
         <div className="createPostDiv">
-            <section>
+            <section className="inputSection">
+                <Avatar alt="John Doe" src="">J</Avatar>
                 <input type="text" placeholder={inputPlaceholder} />
-
             </section>
             <section>
-
+                
             </section>
                 
             
