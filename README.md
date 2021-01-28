@@ -18,6 +18,12 @@ Users are able to:
 
 ## Future Implementations
 
+Users will be able to: 
+
+* Customize their profile by having the option for dark mode
+* Connect with other users through direct messanging
+* Create a story that will be shared for 24 hours
+
 ## Technologies Used
 
 * Node.js & Express.js
@@ -27,4 +33,10 @@ Users are able to:
 * CSS3
 * React
 * Redux Toolkit
+
+## Local Setup
+
+1. Clone this repo:
+
+    
 
