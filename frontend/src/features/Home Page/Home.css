@@ -55,16 +55,16 @@ table {
 /* LEFT COMPONENT CSS */
 .leftSide {
     width: 340px;
-    margin-right: 45px;
 }
 #option {
     display: flex;
     justify-content: flex-start;
     align-items: center;
-    margin-left: 20px;
+    padding-left: 8px;
+    padding-right: 8px;
 }
 #option > img {
-    height: 45px;
+    height: 40px;
 }
 /* MIDDLE COMPONENT CSS */
 .middle {

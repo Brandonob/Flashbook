@@ -3,7 +3,8 @@ import axios from 'axios'
 import { signUp } from '../Utils/firebaseFunctions'
 import { getAPI } from '../Utils/Util'
 import xicon from '../Nav Icons/xicon.png'
-import { DatePicker } from 'react-datepicker'
+import DatePicker from 'react-datepicker'
+import "react-datepicker/dist/react-datepicker.css";
 
 const SignupForm = ({setShowDiv}) => {
     const [firstName, setFirstName] = useState("");
@@ -53,15 +54,20 @@ const SignupForm = ({setShowDiv}) => {
             setErrMessage(error.message)
         }
     }
-    const iconClick = () => {
-        setShowDiv(true)
+    const iconClick = (e) => {
+        e.preventDefault()
+        setShowDiv(false)
     }
     return (
         <div className="signupContainer">
             <div className="signupHeader">
-                <h2>Sign Up</h2>
-                <p>It's quick and easy.</p>
-                <img onClick={iconClick} id="xicon" alt="" src={xicon}/>
+                <section>
+                    <h2>Sign Up</h2>
+                    <p>It's quick and easy.</p>
+                </section>
+                <section onClick={iconClick} >
+                    <img id="xicon" alt="" src={xicon}/>
+                </section>
             </div>
 
             <form className="signupForm" onSubmit={handleSubmit}>
@@ -71,36 +77,51 @@ const SignupForm = ({setShowDiv}) => {
                 <input id="epwInput" value={password} type="password" placeholder="New password" onChange={(e)=> setPassword(e.target.value)}/>
                 <section id="formSection">
                     <h5>Birthday</h5>
-                    <select id="bdayOptions">
-                        {/* {() => {
-                            return (
-                                <DatePicker
-                                selected={startDate}
-                                onChange={date => setStartDate(date)}
-                                dateFormat="MM/yyyy"
-                                showMonthYearPicker
-                                />
-                            );
-                            }} */}
+                    {/* <select id="bdayOptions"> */}
+                    <section className="dpSection">
+                        <DatePicker
+                            className="datePicker"
+                            selected={startDate}
+                            onChange={date => setStartDate(date)}
+                            dateFormat="MMMM"
+                            showMonthYearPicker
+                        />
 
-                        {months.map(el => {
-                            return <option key={el} value={el}>{el}</option>
-                        })}
-                    </select>
-                    <select id="bdayOptions">
-                        {days.map(el => {
-                            return <option key={el} value={el}>{el}</option>
-                        })}
-                    </select>
-                    <select id="bdayOptions">
-                        {years.map(el => {
-                            return <option key={el} value={el}>{el}</option>
-                        })}
-                    </select>
-                    <h5>Gender</h5>
+                        <DatePicker
+                            className="datePicker"
+                            selected={startDate}
+                            onChange={date => setStartDate(date)}
+                            dateFormat="dd"
+                            dropdownMode="select"
+                        />
+
+                        <DatePicker
+                            className="datePicker"
+                            selected={startDate}
+                            onChange={date => setStartDate(date)}
+                            dateFormat="yyyy"
+                            showYearPicker
+                        />
+                    </section> 
+
+                    <h5 id="genderTitle">Gender</h5>
+                    <section className="genderContainer" >
+                        <section className="genderBorder" >
+                            <label for="female">Female</label>
+                            <input type="radio" name="gender" id="female" value="female" />
+                        </section>
+                        <section className="genderBorder" >
+                            <label for="male">Male</label>
+                            <input type="radio" name="gender" id="male" value="male" />
+                        </section>
+                        <section className="genderBorder" >
+                            <label for="custom">Other</label>
+                            <input type="radio" name="gender" id="other" value="other" />
+                        </section>
+                    </section>
                     
                 </section>
-                    <button>Sign Up</button>
+                    <button className="signupButton2">Sign Up</button>
             </form>
 
             

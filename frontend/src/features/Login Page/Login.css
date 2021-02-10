@@ -151,11 +151,10 @@ table {
 .signupContainer {
     background-color: white;
     width: 450px;
-    height: 550px;
+    height: 480px;
     margin: 20px;
     border-radius: 10px;
     box-shadow: 0 0 1rem 0 rgba(0, 0, 0, 0.2);
-    
 }
 #nameInput {
     border: solid 1px #cdd0d5;
@@ -169,8 +168,10 @@ table {
     border-bottom: solid#cdd0d5 1px;
     padding: 10px;
     margin-bottom: 15px;
+    display: flex;
+    justify-content: space-between;
 }
-.signupHeader > h2 {
+.signupHeader > section > h2 {
     color: #1c1e21;
     font-family: SFProDisplay-Bold, Helvetica, Arial, sans-serif;
     font-size: 32px;
@@ -178,7 +179,7 @@ table {
     margin-bottom: 0;
     font-weight: 600;
 }
-.signupHeader > p {
+.signupHeader > section > p {
     color: #747b82;
     font-family: SFProText-Regular, Helvetica, Arial, sans-serif;
     font-size: 15px;
@@ -204,14 +205,60 @@ table {
     flex-direction: column;
     flex: auto;
     margin-left: 18px;
+    margin-right: 18px;
 }
 #bdayOptions {
     width: 125px;
 }
 #xicon {
-    position: absolute;
+    /* position: absolute;
     left: 63%;
-    top: 17.5%;
+    top: 17.5%; */
     height: 22px;
+}
+.datePicker {
+    border-radius: 4px;
+    height: 30px;
+    width: 120px;
+}
+.dpSection {
+    display: flex;
+    justify-content: space-between;
+}
+#genderTitle {
+    margin-top: 10px;
+}
+.genderContainer {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 30px;
+}
+.genderBorder {
+    /* border: solid 1px #cdd0d5;
+    width: 100px; */
+    background-color: #fff;
+    border: 1px solid #ccd0d5;
+    box-sizing: border-box;
+    height: 36px;
+    width: 127px;
+    border-radius: 4px;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+.signupButton2 {
+    background: none;
+    background-color: #00a400;
+    border: none;
+    border-radius: 6px;
+    box-shadow: none;
+    color: #fff;
+    font-size: 18px;
+    font-weight: 600;
+    height: 36px;
+    overflow: hidden;
+    padding: 0 32px;
+    text-shadow: none;
+    width: 194px;
 }
 /* SIGNUP FORM CSS END */
