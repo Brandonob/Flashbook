@@ -18,6 +18,12 @@ Users are able to:
 
 ## Future Implementations
 
+Users will be able to: 
+
+* Customize their profile by having the option for dark mode
+* Connect with other users through direct messanging
+* Create a story that will be shared for 24 hours
+
 ## Technologies Used
 
 * Node.js & Express.js
@@ -27,4 +33,28 @@ Users are able to:
 * CSS3
 * React
 * Redux Toolkit
+
+## Local Setup
+
+1. Clone this repo:
+
+    git clone https://github.com/Brandonob/Flashbook.git && cd Flashbook
+
+2. Install dependencies for the Node/Express Server (`backend` folder):
+
+    cd backend && npm install
+    
+3. Install dependencies the React App (`frontend` folder):
+
+    cd frontend && npm install
+
+4. Create database:
+
+    cd backend && cd db
+    psql -f db.sql
+    
+5. To launch the React App, inside the `frontend` folder, and view the web application:
+
+    cd frontend && npm start
+  
 
