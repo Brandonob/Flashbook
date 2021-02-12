@@ -61,7 +61,7 @@ table {
 }
 .center {
     display: flex;
-    width: 500px;
+    width: 640px;
     justify-content: space-between;
 }
 .right {
@@ -69,16 +69,33 @@ table {
     justify-content: center;
     align-items: center;
 }
-.right > .userSection {
+.userSection {
     display: flex;
     justify-content: center;
     align-items: center;
     margin-right: 15px;
+    border-radius: 30px;
+    height: 26px;
+    width: fit-content;
+    padding: 4px;
 }
+.userSection > p {
+    margin-left: 8px;
+}
+
 
 .center > section > a > img {
     height: 50px;
 
+}
+.center > section {
+    width: inherit;
+    display: flex;
+    justify-content: center;
+    border-radius: 4px;
+}
+.center > section:hover {
+    background-color: #e5e7eb;
 }
 /* .right > section > img {
     height: 40px;
@@ -99,5 +116,17 @@ table {
     margin: 5px;
 }
 .right > section:hover {
-    background-color: lightgray;
+    background-color: #e5e7eb;
+}
+#searchBar {
+    height: 38px;
+    width: 202px;
+    border-radius: 25px;
+    background-color: #f0f2f6;
+    border: solid 1px #f0f2f6;
+    margin-left: 8px;
+}
+#avatar {
+    height: 30px;
+    width: 30px;
 }

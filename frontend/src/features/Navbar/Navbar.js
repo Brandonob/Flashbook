@@ -1,19 +1,19 @@
 import React, { useState } from 'react';
-import f_logo from '../Nav Icons/flashbookImg.png'
-import f_dropdownimgL from '../Nav Icons/f_dropdownimgL.png'
-import f_gamesimgD from '../Nav Icons/f_gamesimgD.png'
-import f_gamesimgL from '../Nav Icons/f_gamesimgL.png'
-import f_groupsimgD from '../Nav Icons/f_groupsimgD.png'
-import f_groupsimgL from '../Nav Icons/f_groupsimgL.png'
-import f_homeimgD from '../Nav Icons/f_homeimgD.png'
-import f_homeimgL from '../Nav Icons/f_homeimgL.png'
-import f_marketplaceimgD from '../Nav Icons/f_marketplaceimgD.png'
-import f_marketplaceimgL from '../Nav Icons/f_marketplaceimgL.png'
-import f_messangerimgL from '../Nav Icons/f_messangerimgL.png'
-import f_notificationsimg from '../Nav Icons/f_notificationsimg.png'
-import f_plusimgL from '../Nav Icons/f_plusimgL.png'
-import f_watchimgD from '../Nav Icons/f_watchimgD.png'
-import f_watchimgL from '../Nav Icons/f_watchimgL.png'
+import f_logo from '../NavIcons/flashbookImg.png'
+import f_dropdownimgL from '../NavIcons/f_dropdownimgL.png'
+import f_gamesimgD from '../NavIcons/f_gamesimgD.png'
+import f_gamesimgL from '../NavIcons/f_gamesimgL.png'
+import f_groupsimgD from '../NavIcons/f_groupsimgD.png'
+import f_groupsimgL from '../NavIcons/f_groupsimgL.png'
+import f_homeimgD from '../NavIcons/f_homeimgD.png'
+import f_homeimgL from '../NavIcons/f_homeimgL.png'
+import f_marketplaceimgD from '../NavIcons/f_marketplaceimgD.png'
+import f_marketplaceimgL from '../NavIcons/f_marketplaceimgL.png'
+import f_messangerimgL from '../NavIcons/f_messangerimgL.png'
+import f_notificationsimg from '../NavIcons/f_notificationsimg.png'
+import f_plusimgL from '../NavIcons/f_plusimgL.png'
+import f_watchimgD from '../NavIcons/f_watchimgD.png'
+import f_watchimgL from '../NavIcons/f_watchimgL.png'
 import { getAPI } from '../Utils/Util'
 import './Navbar.css'
 import Avatar from '@material-ui/core/Avatar'
@@ -39,7 +39,7 @@ const NavBar = () => {
                 <a href={`${API}/home`}>
                     <img id="flogo" src={f_logo} alt="" />
                 </a>
-                <input type="text" src="" placeholder="Search Facebook"/>
+                <input id="searchBar" type="text" src="" placeholder="Search Facebook"/>
             </div>
 
             <div className="center">
@@ -73,7 +73,7 @@ const NavBar = () => {
 
             <div className="right">
                 <section className="userSection">
-                    <Avatar alt="John Doe" src="">J</Avatar>
+                    <Avatar id="avatar" alt="John Doe" src="">J</Avatar>
                     <p>John Doe</p>
                 </section>
                 <section className="circleDiv" >

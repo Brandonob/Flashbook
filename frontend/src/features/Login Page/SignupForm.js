@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import axios from 'axios'
 import { signUp } from '../Utils/firebaseFunctions'
 import { getAPI } from '../Utils/Util'
-import xicon from '../Nav Icons/xicon.png'
+import xicon from '../NavIcons/xicon.png'
 import DatePicker from 'react-datepicker'
 import "react-datepicker/dist/react-datepicker.css";
 

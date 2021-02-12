@@ -62,9 +62,22 @@ table {
     align-items: center;
     padding-left: 8px;
     padding-right: 8px;
+    height: 54px;
+    border-radius: 15px;
 }
 #option > img {
-    height: 40px;
+    height: 43px;
+    
+}
+#option > h5 {
+    margin-left: 10px;
+}
+#option:hover {
+    background-color: #e5e7eb;
+}
+
+.avatar {
+
 }
 /* MIDDLE COMPONENT CSS */
 .middle {

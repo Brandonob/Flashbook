@@ -6,6 +6,7 @@ import f_marketplaceBlogo from '../Web Icons/f_marketplaceBlogo.png'
 import f_pages from '../Web Icons/f_pages.png'
 import f_watchBlogo from '../Web Icons/f_watchBlogo.png'
 import friendsLogo from '../Web Icons/friendsLogo.png'
+import Avatar from '@material-ui/core/Avatar'
 import './Home.css'
 
 
@@ -15,6 +16,10 @@ const LeftContainer = () => {
     // const state = useSelector()
     return (
         <div className="leftHud">
+            <section id="option">
+                <Avatar alt="John Doe" src="" className="avatar" >J</Avatar>
+                <h5>John Doe</h5>
+            </section>
             <section id="option">
                 <img src={friendsLogo} alt=""></img>
                 <h5>Friends</h5>
