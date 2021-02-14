@@ -15,8 +15,8 @@ import f_plusimgL from '../NavIcons/f_plusimgL.png'
 import f_watchimgD from '../NavIcons/f_watchimgD.png'
 import f_watchimgL from '../NavIcons/f_watchimgL.png'
 import { getAPI } from '../Utils/Util'
-import './Navbar.css'
 import Avatar from '@material-ui/core/Avatar'
+import './Navbar.css'
 
 
 
