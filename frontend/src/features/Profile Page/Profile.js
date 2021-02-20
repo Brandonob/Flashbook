@@ -1,12 +1,28 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import Avatar from '@material-ui/core/Avatar'
 import ProfileIntro from './ProfileIntro'
 import ProfileFriends from './ProfileFriends'
 import ProfilePhotos from './ProfilePhotos'
 import CreatePost from '../Posts/CreatePost'
+import firebase from "firebase/app";
+import { fetchUserPosts } from '../Posts/postsSlice'
+import { selectID } from '../Users/usersSlice'
+import { useDispatch, useSelector } from 'react-redux'
 import './Profile.css'
 
 const Profile = () => {
+    const userId = useSelector(selectID);
+    const dispatch = useDispatch();
+
+    useEffect(() => {
+        // console.log(userId);
+        if (userId) {
+            console.log("User has successfully logged in!");
+            dispatch(fetchUserPosts(userId))
+        }
+      
+    }, [])
+
     return (
         <div >
             <div className="profileHeader">

@@ -1,21 +1,22 @@
 import React, { useState } from 'react';
 import f_logo from '../NavIcons/flashbookImg.png'
 import f_dropdownimgL from '../NavIcons/f_dropdownimgL.png'
-import f_gamesimgD from '../NavIcons/f_gamesimgD.png'
+// import f_gamesimgD from '../NavIcons/f_gamesimgD.png'
 import f_gamesimgL from '../NavIcons/f_gamesimgL.png'
-import f_groupsimgD from '../NavIcons/f_groupsimgD.png'
+// import f_groupsimgD from '../NavIcons/f_groupsimgD.png'
 import f_groupsimgL from '../NavIcons/f_groupsimgL.png'
-import f_homeimgD from '../NavIcons/f_homeimgD.png'
+// import f_homeimgD from '../NavIcons/f_homeimgD.png'
 import f_homeimgL from '../NavIcons/f_homeimgL.png'
-import f_marketplaceimgD from '../NavIcons/f_marketplaceimgD.png'
+// import f_marketplaceimgD from '../NavIcons/f_marketplaceimgD.png'
 import f_marketplaceimgL from '../NavIcons/f_marketplaceimgL.png'
 import f_messangerimgL from '../NavIcons/f_messangerimgL.png'
 import f_notificationsimg from '../NavIcons/f_notificationsimg.png'
 import f_plusimgL from '../NavIcons/f_plusimgL.png'
-import f_watchimgD from '../NavIcons/f_watchimgD.png'
+// import f_watchimgD from '../NavIcons/f_watchimgD.png'
 import f_watchimgL from '../NavIcons/f_watchimgL.png'
 import { getAPI } from '../Utils/Util'
 import Avatar from '@material-ui/core/Avatar'
+import { useHistory } from 'react-router-dom'
 import './Navbar.css'
 
 
@@ -23,16 +24,23 @@ import './Navbar.css'
 
 const NavBar = () => {
     const [theme, setTheme] = useState("light")
+
     const API = getAPI();
+    const history = useHistory();
 
-    const changeTheme = () => {
-        if(theme === "light"){
-            setTheme("dark")
-        } else {
-            setTheme("light")
-        }
-
+    const handleAvatar = (e) => {
+        e.preventDefault();
+        history.push("/profile")
     }
+
+    // const changeTheme = () => {
+    //     if(theme === "light"){
+    //         setTheme("dark")
+    //     } else {
+    //         setTheme("light")
+    //     }
+
+    // }
     return (
         <div className="navbar">
             <div className="left">
@@ -49,22 +57,22 @@ const NavBar = () => {
                     </a>
                 </section>
                 <section>
-                    <a>
+                    <a href={`${API}/home`}>
                         <img src={f_watchimgL} alt=""/>
                     </a>
                 </section>
                 <section>
-                    <a>
+                    <a href={`${API}/home`}>
                         <img src={f_marketplaceimgL} alt=""/>
                     </a>
                 </section>
                 <section>
-                    <a>
+                    <a href={`${API}/home`}>
                         <img src={f_groupsimgL} alt=""/>
                     </a>
                 </section>
                 <section>
-                    <a>
+                    <a href={`${API}/home`}>
                         <img src={f_gamesimgL} alt=""/>
                     </a>
                 </section>
@@ -72,8 +80,8 @@ const NavBar = () => {
             </div>
 
             <div className="right">
-                <section className="userSection">
-                    <Avatar id="avatar" alt="John Doe" src="">J</Avatar>
+                <section className="userSection" onClick={handleAvatar}>
+                    <Avatar id="avatar" alt="John Doe" src="" >J</Avatar>
                     <p>John Doe</p>
                 </section>
                 <section className="circleDiv" >

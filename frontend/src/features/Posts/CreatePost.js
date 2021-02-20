@@ -1,49 +1,28 @@
 import React, {useState} from 'react'
 import './CreatePost.css'
 import Avatar from '@material-ui/core/Avatar'
-import { makeStyles } from "@material-ui/core/styles";
 import tagIcon from '../Web Icons/tagIcon.png'
 import feelingIcon from '../Web Icons/feelingIcon.png'
 import imageIcon from '../Web Icons/imageIcon.png'
+import PostBuilder from './PostBuilder'
 
-const useStyles = makeStyles({
-    avatar: {
-    //   marginRight: "20px",
-    },
-  });
 
 const CreatePost = ({userName}) => {
     const [inputPlaceholder, setInputPlaceholder] = useState(`What's on your mind, ${userName}`);
     const [body, setBody] = useState("");
-    const classes = useStyles();
+    const [showDiv, setShowDiv] = useState(false);
+    
 
-    const handleSubmit = (e) => {
+    const handleInputClick = (e) => {
         e.preventDefault();
-
-    }
-
-    const postForm = () => {
-        return (
-            <div>
-                 <section>
-                    <h1> Create Post</h1>
-                 </section>
-                 <section>
-                    <Avatar alt="John Doe" src="" className={classes.avatar} >J</Avatar>
-                    <p>Name</p>
-                 </section>
-                 <section>
-                    <input /> 
-                 </section>
-            </div>
-        )
+        setShowDiv(true)
     }
     
     return (
         <div className="createPostDiv">
             <section className="inputSection">
                 <Avatar alt="John Doe" src="" className="avatar" >J</Avatar>
-                <input type="text" placeholder={inputPlaceholder} />
+                <input type="text" placeholder={inputPlaceholder} onClick={handleInputClick}/>
             </section>
             <section className="postFeatures">
                 <section>
@@ -59,6 +38,11 @@ const CreatePost = ({userName}) => {
                     <p>Feeling/Activity</p>
                 </section>
             </section>
+            {showDiv ? (
+                <div className="pBuilderDiv" > 
+                    <PostBuilder setShowDiv={setShowDiv}/>
+                </div>
+            ) : null}
                 
             
         </div>

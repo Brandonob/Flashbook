@@ -2,22 +2,23 @@ import { createSlice } from '@reduxjs/toolkit'
 import axios from 'axios'
 import { getAPI } from '../Utils/Util'
 
+
 const API = getAPI();
 
 export const postsSlice = createSlice({
     name: "posts",
     initialState: [],
     reducers: {
-        recieveAllPosts: (state, action) => action.payload
+        recieveUserPosts: (state, action) => action.payload
     }
 })
 
-export const fetchAllPosts = () => async dispatch => {
+export const fetchUserPosts = (currentUserID) => async (dispatch) => {
     try {
         let res = await axios.get(`${API}/posts`);
         const { posts } = res.data.body;
         // debugger
-        dispatch(recieveAllPosts(posts))
+        dispatch(recieveUserPosts(posts))
     } catch (error) {
         console.log(error.message);
     }
@@ -25,5 +26,5 @@ export const fetchAllPosts = () => async dispatch => {
 
 export const selectPosts = state => state.posts
 
-export const { recieveAllPosts } = postsSlice.actions;
+export const { recieveUserPosts } = postsSlice.actions;
 export default postsSlice.reducer;

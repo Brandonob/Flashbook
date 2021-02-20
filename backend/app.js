@@ -7,7 +7,7 @@ const postsRouter = require('./routes/posts/posts')
 const likesRouter = require('./routes/likes/likes')
 const commentsRouter = require('./routes/comments/comments')
 
-const PORT = process.env.PORT;
+const PORT = process.env.PORT || 3001;
 const app = express();
 
 app.use(cors());

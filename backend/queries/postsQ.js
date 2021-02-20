@@ -23,12 +23,14 @@ const getAllPosts = async (req, res, next) => {
         message: "Got all posts by user id: " + req.params.owner_id,
         body: {
           posts: await db.any(
-            "SELECT owner_id, post_image_url, body FROM posts INNER JOIN users ON posts.owner_id = users.id WHERE posts.owner_id = $1 ORDER BY posts.id DESC",
+            "SELECT owner_id, post_image_url, body, timestamp, first_name, last_name, profile_pic FROM posts INNER JOIN users ON posts.owner_id = users.id WHERE posts.owner_id = $1 ORDER BY posts.id DESC",
             req.params.owner_id
           )
         }
       });
-    } catch (error) {}
+    } catch (error) {
+      console.log(error.message);
+    }
   };
   
   const getPost = async (req, res, next) => {

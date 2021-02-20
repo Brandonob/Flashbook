@@ -19,16 +19,18 @@ function App() {
 
   return (
     <div className="App">
-      {/* {NavBarView() ? <Navbar /> : null} */}
+      {NavBarView() ? <Navbar /> : null}
       <Switch>
         <Route exact path={"/"}>
+          <Redirect to="/login" />
+        </Route>
+        <Route exact path={"/login"}>
           <Login />
         </Route>
         <Route exact path={"/home"}>
           <Home />
         </Route>
         <Route exact path={"/profile"}>
-          <Navbar />
           <Profile />
         </Route>
       </Switch>

@@ -1,3 +1,4 @@
+
 /* CSS RESET START */
 html, body, div, span, applet, object, iframe,
 h1, h2, h3, h4, h5, h6, p, blockquote, pre,
@@ -44,42 +45,17 @@ table {
 }
 /* CSS RESET ENDS */
 
-/* HOME COMPONENT CSS */
-.home {
-    height: fit-content;
-    background-color:#f0f2f6;
-    display: flex;
-    /* justify-content: start; */
+.postContainer {
+	
 }
-
-/* LEFT COMPONENT CSS */
-.leftSide {
-    width: 340px;
-}
-#option {
-    display: flex;
-    justify-content: flex-start;
-    align-items: center;
-    padding-left: 8px;
-    padding-right: 8px;
-    height: 54px;
-    border-radius: 15px;
-}
-#option > img {
-    height: 43px;
-    
-}
-#option > h5 {
-    margin-left: 10px;
-}
-#option:hover {
-    background-color: #e5e7eb;
-}
-
-/* MIDDLE COMPONENT CSS */
-.middle {
-    width: 700px;
-    margin-right: 40px;
+.post {
+	background-color: white;
+    border-radius: 10px;
+    width: 88%;
     margin: 15px;
+    padding: 15px;
 }
-/* RIGHT COMPONENT CSS */
+.infoSection {
+	display: flex;
+    align-items: center;
+}

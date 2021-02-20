@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { useHistory } from 'react-router-dom'
 import { useDispatch } from 'react-redux'
-// import { addUser } from '../users/usersSlice'
+import { addUser } from '../Users/usersSlice'
 import { login } from '../Utils/firebaseFunctions'
 import './Login.css'
 import SignupForm from './SignupForm'
@@ -14,25 +14,23 @@ const Login = () => {
     const dispatch = useDispatch();
     const [showDiv, setShowDiv] = useState(false);
 
-
-
     const handleSubmit = async (e) => {
         e.preventDefault();
         try {
             let res = await login(email, password)
+            // debugger
             console.log("you have succesfully logged in");
-            // dispatch(addUser(res.user.uid));
+            dispatch(addUser(res.user.uid));
             history.push("/home")
             
         } catch (error) {
             setErrMessage(error.message)
+            // debugger
         }
-
     }
 
     const handleClick = (e) => {
         e.preventDefault();
-
         setShowDiv(true)
     }
 
@@ -46,7 +44,7 @@ const Login = () => {
                 <form onSubmit={handleSubmit}>
                     <input id="loginInput" value={email} placeholder="Email or Phone Number" className="loginB" type="text" onChange={(e)=> setEmail(e.target.value)} />
                     <input id="loginInput" value={password} placeholder="Password" className="loginB" type="password" onChange={(e)=> setPassword(e.target.value)} />
-                    <button id="loginB" >Log In</button>
+                    <button id="loginB" type="submit" >Log In</button>
                 </form>  
                 <div className="signupButton">
                     <button onClick={handleClick} className="signupB">Create New Account</button>
