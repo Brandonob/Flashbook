@@ -35,7 +35,8 @@ CREATE TABLE likes
 (
     id SERIAL PRIMARY KEY,
     liker_id VARCHAR REFERENCES users(id) ON DELETE CASCADE,
-    post_id INT REFERENCES posts(id) ON DELETE CASCADE
+    post_id INT REFERENCES posts(id) ON DELETE CASCADE,
+    CONSTRAINT UC_like UNIQUE (liker_id,post_id)
 );
 
 CREATE TABLE comments
@@ -58,3 +59,8 @@ VALUES
     ('QyebSQDAL8MsUSpz9QbjmgxLXOd2', 'backend/images/cream.png', 'was everyones day delightful today?'),
     ('QyebSQDAL8MsUSpz9QbjmgxLXOd2', 'backend/images/Flashbookcopy.png', 'Hey there'),
     ('QyebSQDAL8MsUSpz9QbjmgxLXOd2', 'backend/images/cream.png', 'Im so bored today');
+
+INSERT INTO likes
+    (liker_id, post_id)
+VALUES
+    ('QyebSQDAL8MsUSpz9QbjmgxLXOd2', 1)

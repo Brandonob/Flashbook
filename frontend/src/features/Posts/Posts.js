@@ -3,6 +3,7 @@ import { useSelector } from 'react-redux'
 import { selectPosts } from './postsSlice'
 import { selectInfo } from '../Users/usersSlice'
 import Avatar from '@material-ui/core/Avatar'
+import Likes from './Likes'
 import './Post.css'
 
 const Posts = () => {
@@ -30,9 +31,7 @@ const Posts = () => {
                             </section>
                         ) : null}
                         <section className="pButtonsSection">
-                            <section>
-                                <h6>Like</h6>
-                            </section>
+                            <Likes id={post.id}/>
                             <section>
                                 <h6>Comment</h6>
                             </section>
