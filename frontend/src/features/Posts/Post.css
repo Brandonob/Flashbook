@@ -45,9 +45,9 @@ table {
 }
 /* CSS RESET ENDS */
 
-.postContainer {
+/* .postContainer {
 	
-}
+} */
 .post {
 	background-color: white;
     border-radius: 10px;
@@ -58,4 +58,8 @@ table {
 .infoSection {
 	display: flex;
     align-items: center;
+}
+#postImage {
+	width: 600px;
+    height: 550px;
 }

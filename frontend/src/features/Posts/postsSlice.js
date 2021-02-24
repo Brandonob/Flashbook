@@ -9,7 +9,8 @@ export const postsSlice = createSlice({
     name: "posts",
     initialState: [],
     reducers: {
-        recieveUserPosts: (state, action) => action.payload
+        recieveUserPosts: (state, action) => action.payload,
+        recieveSinglePost: (state, action) => [action.payload, ...state] 
     }
 })
 
@@ -26,5 +27,6 @@ export const fetchUserPosts = (currentUserID) => async (dispatch) => {
 
 export const selectPosts = state => state.posts
 
-export const { recieveUserPosts } = postsSlice.actions;
+;
+export const { recieveUserPosts, recieveSinglePost } = postsSlice.actions;
 export default postsSlice.reducer;

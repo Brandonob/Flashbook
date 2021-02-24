@@ -4,6 +4,7 @@ import ProfileIntro from './ProfileIntro'
 import ProfileFriends from './ProfileFriends'
 import ProfilePhotos from './ProfilePhotos'
 import CreatePost from '../Posts/CreatePost'
+import Posts from '../Posts/Posts'
 import firebase from "firebase/app";
 import { fetchUserPosts } from '../Posts/postsSlice'
 import { selectID } from '../Users/usersSlice'
@@ -71,6 +72,7 @@ const Profile = () => {
                 </div>
                 <div className="rightSection">
                     <CreatePost />
+                    <Posts />
                 </div>
             </div>
         </div>

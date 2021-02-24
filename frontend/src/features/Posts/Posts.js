@@ -27,7 +27,7 @@ const Posts = () => {
                         </section>
                         {post.post_image_url ? (
                             <section className="pMediaSection">
-                                <img src={post.post_image_url} alt=""/>
+                                <img id="postImage" src={post.post_image_url} alt=""/>
                             </section>
                         ) : null}
                         <section className="pButtonsSection">

@@ -1,11 +1,11 @@
 import React, { useState, useEffect } from 'react'
-import { useSelector } from 'react-redux'
+import { useSelector, useDispatch } from 'react-redux'
 import Avatar from '@material-ui/core/Avatar'
 import xicon from '../NavIcons/xicon.png'
-import { fetchUserPosts } from './postsSlice'
+import { fetchUserPosts, recieveSinglePost } from './postsSlice'
 import { storage } from '../../firebase'
 import { getAPI } from '../Utils/Util'
-import { selectID } from '../Users/usersSlice'
+import { selectID, selectInfo } from '../Users/usersSlice'
 import axios from 'axios'
 
 const PostBuilder = ({setShowDiv}) => {
@@ -13,12 +13,27 @@ const PostBuilder = ({setShowDiv}) => {
     const [image, setImage] = useState("")
     const [URL, setURL] = useState("");
 
+    const userInfo = useSelector(selectInfo);
     const userId = useSelector(selectID);
+    const dispatch = useDispatch();
     const API = getAPI();
 
     useEffect(() => {
 
     }, [])
+
+    const handleNewPost = (post) => {
+        let completePost = {
+            ...post,
+            first_name: userInfo.first_name,
+            last_name: userInfo.last_name,
+            profile_pic: userInfo.profile_pic
+        };
+
+        dispatch(recieveSinglePost(completePost))
+    }
+
+    
 
     const handleUpload = async e => {
         e.preventDefault();
@@ -36,15 +51,18 @@ const PostBuilder = ({setShowDiv}) => {
                         .ref("images")
                         .child(image.name)
                         .getDownloadURL()
-                        .then(url => {
+                        .then(async url => {
                             debugger
                             setURL(url)
                             try {
-                                axios.post(`${API}/posts`, {
+                                let res = await axios.post(`${API}/posts`, {
                                     owner_id: userId,
                                     post_image_url: url,
                                     body: inputText
-                                }) 
+                                })
+                                let newPost = res.data.body.single_post
+                                handleNewPost(newPost)
+                                console.log(newPost); 
                             } catch (error) {
                                 console.log(error.message);
                             }
