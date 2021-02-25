@@ -1,7 +1,7 @@
-DROP DATABASE IF EXISTS flashbook_db;
-CREATE DATABASE flashbook_db;
+-- DROP DATABASE IF EXISTS flashbook_db;
+-- CREATE DATABASE flashbook_db;
 
-\c flashbook_db;
+-- \c flashbook_db;
 
 DROP TABLE IF EXISTS users;
 DROP TABLE IF EXISTS posts;
@@ -52,15 +52,15 @@ INSERT INTO users
 VALUES
     ('QyebSQDAL8MsUSpz9QbjmgxLXOd2', 'secret', 'Brandon', 'Brown', 'brandonob@gmail.com', 'male');
 
-INSERT INTO posts
-    (owner_id, post_image_url, body)
-VALUES
-    ('QyebSQDAL8MsUSpz9QbjmgxLXOd2', 'backend/images/Flashbookcopy.png', 'Hi, how is everyone doing today?'),
-    ('QyebSQDAL8MsUSpz9QbjmgxLXOd2', 'backend/images/cream.png', 'was everyones day delightful today?'),
-    ('QyebSQDAL8MsUSpz9QbjmgxLXOd2', 'backend/images/Flashbookcopy.png', 'Hey there'),
-    ('QyebSQDAL8MsUSpz9QbjmgxLXOd2', 'backend/images/cream.png', 'Im so bored today');
+-- INSERT INTO posts
+--     (owner_id, post_image_url, body)
+-- VALUES
+--     ('QyebSQDAL8MsUSpz9QbjmgxLXOd2', 'backend/images/Flashbookcopy.png', 'Hi, how is everyone doing today?'),
+--     ('QyebSQDAL8MsUSpz9QbjmgxLXOd2', 'backend/images/cream.png', 'was everyones day delightful today?'),
+--     ('QyebSQDAL8MsUSpz9QbjmgxLXOd2', 'backend/images/Flashbookcopy.png', 'Hey there'),
+--     ('QyebSQDAL8MsUSpz9QbjmgxLXOd2', 'backend/images/cream.png', 'Im so bored today');
 
-INSERT INTO likes
-    (liker_id, post_id)
-VALUES
-    ('QyebSQDAL8MsUSpz9QbjmgxLXOd2', 1)
+-- INSERT INTO likes
+--     (liker_id, post_id)
+-- VALUES
+--     ('QyebSQDAL8MsUSpz9QbjmgxLXOd2', 1)
