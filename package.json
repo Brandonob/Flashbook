@@ -1,0 +1,21 @@
+{
+  "name": "Flashbook",
+  "version": "1.0.0",
+  "description": "**Flashbook** is a Full Stack Web App that is a remake of Facebook. Here users are able to sign up to our community, share their thoughts, and interact with other users and posts.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "cd backend && npm install && npm start"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Brandonob/Flashbook.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Brandonob/Flashbook/issues"
+  },
+  "homepage": "https://github.com/Brandonob/Flashbook#readme"
+}
