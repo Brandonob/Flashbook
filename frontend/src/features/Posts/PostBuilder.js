@@ -6,12 +6,15 @@ import { fetchUserPosts, recieveSinglePost } from './postsSlice'
 import { storage } from '../../firebase'
 import { getAPI } from '../Utils/Util'
 import { selectID, selectInfo } from '../Users/usersSlice'
+import imageIcon from '../Web Icons/imageIcon.png'
+import { CustomToast } from '../Toastify/CustomToast'
 import axios from 'axios'
 
 const PostBuilder = ({setShowDiv}) => {
     const [inputText, setInputText] = useState("");
-    const [image, setImage] = useState("")
+    const [image, setImage] = useState("");
     const [URL, setURL] = useState("");
+    const [toastMessage, setToastMessage] = useState("Image has been added");
 
     const userInfo = useSelector(selectInfo);
     const userId = useSelector(selectID);
@@ -88,6 +91,7 @@ const PostBuilder = ({setShowDiv}) => {
     const handleChange = e => {
         if (e.target.files[0]) {
             setImage(e.target.files[0])
+            CustomToast(toastMessage)
         }
     }
     const iconClick = (e) => {
@@ -99,21 +103,29 @@ const PostBuilder = ({setShowDiv}) => {
         <div className="builderContainer">
             <section className="builderHeader">
                 <h2>Create Post</h2>
-                <section onClick={iconClick}>
-                    <img src={xicon} alt="" />
+                <section className="closeSection" onClick={iconClick}>
+                    <img id="xImg" src={xicon} alt="" />
                 </section>
             </section>
-            <section>
-                <Avatar id="avatar" alt="John Doe" src="">J</Avatar>
-
+            <section className="uinfoSection">
+                <Avatar id="pbAvatar" alt="John Doe" src="">J</Avatar>
+                <h5>{userInfo.first_name} {userInfo.last_name}</h5>
             </section>
             <form onSubmit={handleUpload}>
-                <input type="text" value={inputText} placeholder="What's on your mind?" onChange={(e)=> setInputText(e.target.value)}/>
-                <section>
-                    <input type="file" onChange={handleChange}/>
+                <input id="pBuilderInput" type="text" value={inputText} placeholder={`What's on your mind, ${userInfo.first_name}?`} onChange={(e)=> setInputText(e.target.value)}/>
+                {/* <section>
+                    <img src={ image ? image.name : null } alt=""/>
+                </section> */}
+                <section className="fileSection">
+                    <h3>Add to Your Post</h3>
+                    <input id="pfInput" type="file" onChange={handleChange} />
+                    <label for="pfInput" >
+                        <img src={imageIcon} alt=""/>
+                        {/* <p>{image.name}</p> */}
+                    </label>
                 </section>
                 <section>
-                    <button type="submit" >Post</button>
+                    <button id="pSubmit" type="submit" >Post</button>
                 </section>
             </form>
             

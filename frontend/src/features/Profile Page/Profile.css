@@ -45,13 +45,13 @@ table {
 /* CSS RESET ENDS */
 
 .profileHeader {
-    height: 65vh;
+    height: 60vh;
     background-color: white;
     display: flex;
     justify-content: center;
 }
 .imageDiv {
-    background-color: lightblue;
+    background-color: #c958f5;
     width: 940px;
     height: 404px;
     border-radius: 5px;
@@ -70,17 +70,27 @@ table {
     flex-direction: column;
     width: 870px;
 }
+.avatarDiv > div > h1{
+    font-family: arial, sans-serif;
+    font-style: normal;
+    font-size: xx-large;
+}
 .avatarDiv > div {
     display: flex;
     justify-content: center;
 }
 .profileOptions {
     display: flex;
-    margin-top: 80px;
+    margin-top: 25px;
     border-top: 1px solid #f0f2f6;
     height: 60px;
     justify-content: space-between;
     align-items: center;
+}
+.profileOptions > div > section > h5 {
+    font-family: arial, sans-serif;
+    font-style: normal;
+    color: black;
 }
 .profileOptions > div {
     display: flex;
@@ -95,17 +105,20 @@ table {
 }
 .profileOptions > div > section:hover {
     background-color: #e5e7eb;
+    cursor: pointer;
 }
 .profileBody {
     background-color: #f0f2f6;
     display: flex;
     justify-content: center;
-    height: 100vh;
+    height: fit-content;
 }
 .leftSection {
     width: 350px;
-    background-color: white;
     margin: 15px;
+}
+.rightSection {
+    width: 595px;
 }
 .createPostDiv {
     margin: 15px;
@@ -113,4 +126,60 @@ table {
 .introDiv {
     margin: 15px;
     border-radius: 10px;
+}
+.epContainer {
+    background-color: white;
+    width: 480px;
+    height: -moz-fit-content;
+    height: fit-content;
+    margin: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 1rem 0 rgba(0, 0, 0, 0.2);
+    display: flex;
+    flex-direction: column;
+    padding: 10px;
+}
+.epDiv {
+    position: absolute;
+    background-color: rgba(255, 255, 255, .15);
+    -webkit-backdrop-filter: blur(5px);
+    backdrop-filter: blur(5px);
+    height: 100vh;
+    width: 100vw;
+    top: 0%;
+    left: 0%;
+    bottom: 0%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1;
+}
+#profilepicInput {
+    width: 0.1px;
+	height: 0.1px;
+	opacity: 0;
+	overflow: hidden;
+	position: absolute;
+	z-index: -1;
+}
+.photosDiv {
+    display: flex;
+    justify-content: space-between;
+    /* margin: 15px; */
+    box-shadow: 0 0 1rem 0 rgba(0, 0, 0, 0.2);
+    background-color: white;
+    height: 350px;
+    border-radius: 10px;
+    padding: 10px;
+}
+.photosDiv > h1 {
+    font-family: arial, sans-serif;
+    font-style: normal;
+    color: black;
+    font-weight: 600;
+}
+.photosDiv > h3 {
+    font-family: arial, sans-serif;
+    font-style: normal;
+    color: black;
 }

@@ -51,6 +51,7 @@ table {
     border-radius: 10px;
     margin: 30px;
     padding: 15px;
+    box-shadow: 0 0 1rem 0 rgba(0, 0, 0, 0.2);
 }
 .inputSection {
     display: flex;
@@ -67,6 +68,7 @@ table {
 }
 .inputSection > input:hover {
     background-color: #e5e7eb;
+    cursor: pointer;
 }
 #postIcon {
     height: 30px;
@@ -84,8 +86,15 @@ table {
     border-radius: 6px;
     height: 40px;
 }
+.postFeatures > section > h5 {
+    font-family: arial, sans-serif;
+    font-style: normal;
+    color: black;
+}
+
 .postFeatures > section:hover {
     background-color: #e5e7eb;
+    cursor: pointer;
 }
 .pBuilderDiv {
     position: absolute;
@@ -103,9 +112,110 @@ table {
 }
 .builderContainer {
     background-color: white;
-    width: 450px;
-    height: 480px;
+    width: 480px;
+    height: fit-content;
     margin: 20px;
     border-radius: 10px;
     box-shadow: 0 0 1rem 0 rgba(0, 0, 0, 0.2);
+    display: flex;
+    flex-direction: column;
+    padding: 10px;
+}
+.builderHeader {
+    height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    /* padding: 10px;  */
+    border-bottom: solid 1px #bababb;
+}
+#xImg {
+    height: 30px;
+    width: 30px;
+
+}
+.closeSection {
+    height: 40px;
+    width: 40px;
+    background-color: #f0f2f6;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-left: 160px;
+    border-bottom: solid 1px #f0f2f6;
+}
+.closeSection:hover {
+    background-color: lightgray;
+    cursor: pointer;
+}
+.uinfoSection {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    padding-top: 15px;
+    padding-bottom: 15px;
+}
+#pbAvatar {
+    margin-right: 10px;
+    height: 40px;
+    width: 40px;
+}
+#pBuilderInput {
+    width: -webkit-fill-available;
+    height: 120px;
+    border: 0px;
+}
+#pSubmit {
+    width: -webkit-fill-available;
+    height: 45px;
+    border-radius: 8px;
+    border: solid 1px #c958f5;
+    background-color: #c958f5;
+    color: white;
+    font-family: arial, sans-serif;
+    font-style: normal;
+    font-size: larger;
+}
+#pSubmit:hover {
+    background-color: #a31ef7;
+    cursor: pointer;
+}
+#pfInput {
+    width: 0.1px;
+	height: 0.1px;
+	opacity: 0;
+	overflow: hidden;
+	position: absolute;
+	z-index: -1;
+}
+.builderContainer > form > section > label > img {
+    height: 30px;
+    width: 30px;
+}
+.builderContainer > form > section > label {
+    height: 40px;
+    width: 40px;
+    background-color: #f0f2f6;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 5px;
+}
+.builderContainer > form > section > label:hover {
+    background-color: lightgray;
+    cursor: pointer;
+}
+.fileSection {
+    border: solid 1px #bababb;
+    border-radius: 5px;
+    height: 50px;
+    margin-bottom: 15px;
+    margin-top: 15px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding-left: 10px;
+    padding-right: 10px;
 }

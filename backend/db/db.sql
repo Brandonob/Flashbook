@@ -1,7 +1,7 @@
--- DROP DATABASE IF EXISTS flashbook_db;
--- CREATE DATABASE flashbook_db;
+DROP DATABASE IF EXISTS flashbook_db;
+CREATE DATABASE flashbook_db;
 
--- \c flashbook_db;
+\c flashbook_db;
 
 DROP TABLE IF EXISTS users;
 DROP TABLE IF EXISTS posts;
@@ -17,6 +17,7 @@ CREATE TABLE users
     last_name TEXT NOT NULL,
     email_address VARCHAR NOT NULL,
     profile_pic VARCHAR DEFAULT ' ',
+    cover_pic VARCHAR DEFAULT ' ',
     dob VARCHAR DEFAULT ' ',
     gender TEXT NOT NULL,
     bio VARCHAR DEFAULT ' '

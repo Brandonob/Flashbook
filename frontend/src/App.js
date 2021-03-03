@@ -1,10 +1,11 @@
 import React, { useState } from 'react';
-// import Login from './features/Login Page/Login'
 import Login from './features/Login Page/Login'
 import Home from './features/Home Page/Home'
 import Navbar from './features/Navbar/Navbar'
 import Profile from './features/Profile Page/Profile'
 import { Switch, Route, useLocation, Redirect } from 'react-router-dom'
+import { ToastContainer } from 'react-toastify'
+import 'react-toastify/dist/ReactToastify.css'
 
 function App() {
   const NavBarView = () => {
@@ -33,6 +34,17 @@ function App() {
         <Route exact path={"/profile"}>
           <Profile />
         </Route>
+        {/* <ToastContainer
+        position="bottom-right"
+        autoClose={5000}
+        hideProgressBar={false}
+        newestOnTop={false}
+        closeOnClick
+        rtl={false}
+        pauseOnFocusLoss
+        draggable
+        pauseOnHover
+        /> */}
       </Switch>
     </div>
   );

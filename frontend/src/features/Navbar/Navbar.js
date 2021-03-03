@@ -16,7 +16,10 @@ import f_plusimgL from '../NavIcons/f_plusimgL.png'
 import f_watchimgL from '../NavIcons/f_watchimgL.png'
 import { getAPI } from '../Utils/Util'
 import Avatar from '@material-ui/core/Avatar'
-import { useHistory } from 'react-router-dom'
+import { useHistory, Link } from 'react-router-dom'
+import { selectInfo } from '../Users/usersSlice'
+import { useSelector } from 'react-redux'
+import { Toast } from '../Toastify/Toast'
 import './Navbar.css'
 
 
@@ -24,6 +27,8 @@ import './Navbar.css'
 
 const NavBar = () => {
     const [theme, setTheme] = useState("light")
+
+    const info = useSelector(selectInfo)
 
     const API = getAPI();
     const history = useHistory();
@@ -44,56 +49,50 @@ const NavBar = () => {
     return (
         <div className="navbar">
             <div className="left">
-                <a href={`${API}/home`}>
+                <Link to="/home">
                     <img id="flogo" src={f_logo} alt="" />
-                </a>
+                </Link>
                 <input id="searchBar" type="text" src="" placeholder="Search Facebook"/>
             </div>
 
             <div className="center">
-                <section>
-                    <a href={`${API}/home`}>
-                        <img src={f_homeimgL} alt=""/>
-                    </a>
+                <section >
+                    <Link to="/home">
+                        <img id="navIcon" src={f_homeimgL} alt=""/>
+                    </Link>
                 </section>
-                <section>
-                    <a href={`${API}/home`}>
-                        <img src={f_watchimgL} alt=""/>
-                    </a>
+                <section onClick={Toast}>
+                        <img id="navIcon" src={f_watchimgL} alt=""/>
                 </section>
-                <section>
-                    <a href={`${API}/home`}>
-                        <img src={f_marketplaceimgL} alt=""/>
-                    </a>
+                <section onClick={Toast}>
+                        <img id="navIcon" src={f_marketplaceimgL} alt=""/>
+                </section >
+                <section onClick={Toast}>
+                        <img id="navIcon" src={f_groupsimgL} alt=""/>
                 </section>
-                <section>
-                    <a href={`${API}/home`}>
-                        <img src={f_groupsimgL} alt=""/>
-                    </a>
-                </section>
-                <section>
-                    <a href={`${API}/home`}>
-                        <img src={f_gamesimgL} alt=""/>
-                    </a>
+                <section onClick={Toast}>
+                        <img id="navIcon" src={f_gamesimgL} alt=""/>
                 </section>
                 
             </div>
 
             <div className="right">
                 <section className="userSection" onClick={handleAvatar}>
-                    <Avatar id="avatar" alt="John Doe" src="" >J</Avatar>
-                    <p>John Doe</p>
+                    <Link id="link" to="/home">
+                        <Avatar id="avatar" alt="John Doe" src="" >J</Avatar>
+                        <p>{info.first_name}</p>
+                    </Link>
                 </section>
-                <section className="circleDiv" >
+                <section className="circleDiv" onClick={Toast}>
                     <img src={f_plusimgL} alt="" style={{height: "60px"}}/>
                 </section>
-                <section className="circleDiv" >
+                <section className="circleDiv" onClick={Toast}>
                     <img src={f_messangerimgL} alt="" style={{height: "30px"}}/>
                 </section>
-                <section className="circleDiv" >
+                <section className="circleDiv" onClick={Toast}>
                     <img src={f_notificationsimg} alt="" style={{height: "40px"}}/>
                 </section>
-                <section className="circleDiv" >
+                <section className="circleDiv" onClick={Toast}>
                     <img src={f_dropdownimgL} alt="" style={{height: "50px", margin: "1px"}}/>
                 </section>
                 {/* <button onClick={changeTheme} >Dark Mode</button> */}

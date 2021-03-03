@@ -46,14 +46,15 @@ const addUser = async (req, res, next) => {
             last_name,
             email_address,
             profile_pic,
+            cover_pic,
             dob,
             gender
         } = req.body;
         console.log(req.body);
 
         let user = await db.one(
-            "INSERT INTO users (id, password, first_name, last_name, email_address, profile_pic, dob, gender) VALUES ($1, $2, $3, $4, $5, $6, $7, $8) RETURNING *",
-            [id, password, first_name, last_name, email_address, profile_pic, dob, gender]
+            "INSERT INTO users (id, password, first_name, last_name, email_address, profile_pic, cover_pic, dob, gender) VALUES ($1, $2, $3, $4, $5, $6, $7, $8) RETURNING *",
+            [id, password, first_name, last_name, email_address, profile_pic, cover_pic, dob, gender]
         );
         
         res.status(200).json({
@@ -164,6 +165,29 @@ const searchUser = async (req, res, next) => {
       next(error);
     }
   };
+  const updateUserCoverPic = async (req, res, next) => {
+    const { id } = req.params;
+    const { cover_pic } = req.body;
+    try {
+      let user = await db.one(
+        "UPDATE users SET cover_pic=$1 WHERE id=$2 RETURNING *",
+        [cover_pic, id]
+      );
+      res.status(200).json({
+        status: "Success",
+        message: "User's cover Pic Has Been Updated",
+        body: {
+          user
+        }
+      });
+    } catch (error) {
+      res.json({
+        status: "Error",
+        message: "Couldn't Update User"
+      });
+      next(error);
+    }
+  };
 
 module.exports = {
     getAllUsers,
@@ -172,5 +196,6 @@ module.exports = {
     deleteUser,
     searchUser,
     updateUser,
-    updateUserProfilePic
+    updateUserProfilePic,
+    updateUserCoverPic
 };

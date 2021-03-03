@@ -7,13 +7,22 @@ import CreatePost from '../Posts/CreatePost'
 import Posts from '../Posts/Posts'
 import firebase from "firebase/app";
 import { fetchUserPosts } from '../Posts/postsSlice'
-import { selectID } from '../Users/usersSlice'
+import { selectID, selectInfo, fetchUserInfo } from '../Users/usersSlice'
 import { useDispatch, useSelector } from 'react-redux'
+import { Toast } from '../Toastify/Toast'
+import EditProfile from './EditProfile'
+import { storage } from '../../firebase'
+import axios from 'axios'
 import './Profile.css'
 
 const Profile = () => {
+    // const [showDiv, setShowDiv] = useState(false);
+    const [pImage, setPImage] = useState("");
+    const [pImageURL, setPImageURL] = useState("");
+
     const userId = useSelector(selectID);
     const dispatch = useDispatch();
+    const userInfo = useSelector(selectInfo);
 
     useEffect(() => {
         // console.log(userId);
@@ -24,50 +33,96 @@ const Profile = () => {
       
     }, [])
 
+    const handlepChange = e => {
+        // if (e.target.files[0]) {
+        //     setPImage(e.target.files[0])
+        // }
+        debugger
+            const image = e.target.files[0];
+            const uploadMedia = storage.ref(`images/${image.name}`).put(image);
+            uploadMedia.on(
+                "state_changed",
+                snapshot => {},
+                error => {
+                    console.log(error.message);
+                },
+                () => {
+                    storage
+                        .ref("images")
+                        .child(pImage.name)
+                        .getDownloadURL()
+                        .then(async url => {
+                            debugger
+                            setPImageURL(url)
+                            try {
+                                await axios.patch(`/users/profile_pic/${userInfo.id}`, {
+                                    profile_pic: url
+                                  });
+                                  dispatch(fetchUserInfo(userInfo.id))
+                            } catch (error) {
+                                console.log(error.message);
+                            }
+                        });
+                }
+            );
+            // CustomToast("Image selected")
+    }
+
+    // const handleEditClick = (e) => {
+    //     e.preventDefault();
+    //     setShowDiv(true)
+    // }
+
+
     return (
         <div >
             <div className="profileHeader">
-                <div className="imageDiv"></div>
+                <div className="imageDiv">
+
+                </div>
                 <div className="avatarDiv">
                     <div >
-                        <Avatar id="pAvatar" alt="John Doe" src="">J</Avatar>
+                        <input id="profilepicInput" type="file" onChange={handlepChange} />
+                        <label for="profilepicInput">
+                            <Avatar id="pAvatar" alt="John Doe" src={userInfo.profile_pic}>J</Avatar>
+                        </label>
                     </div>
                     <div>
-                        <h1>Fname Lname</h1>
+                        <h1>{userInfo.first_name} {userInfo.last_name}</h1>
                     </div>
                     <section className="profileOptions">
                         <div>
-                            <section>
-                                <h1>Posts</h1>
+                            <section >
+                                <h5>Posts</h5>
                             </section>
-                            <section>
-                                <h1>About</h1>
+                            <section onClick={Toast}>
+                                <h5>About</h5>
                             </section>
-                            <section>
-                                <h1>Friends</h1>
+                            <section onClick={Toast}>
+                                <h5>Friends</h5>
                             </section>
-                            <section>
-                                <h1>Photos</h1>
+                            <section onClick={Toast}>
+                                <h5>Photos</h5>
                             </section>
-                            <section>
-                                <h1>More</h1>
+                            <section onClick={Toast}>
+                                <h5>More</h5>
                             </section>
                         </div>
                         <div>
-                            <section>
+                            <section onClick={Toast}>
                                 <h5>Edit Profile</h5>
                             </section>
-                            <section></section>
-                            <section></section>
-                            <section></section>
+                            {/* <section onClick={Toast}></section>
+                            <section onClick={Toast}></section>
+                            <section onClick={Toast}></section> */}
                         </div>
                     </section>
                 </div>
             </div>
             <div className="profileBody">
                 <div className="leftSection">
-                    <ProfileIntro />
-                    <ProfileFriends />
+                    {/* <ProfileIntro />
+                    <ProfileFriends /> */}
                     <ProfilePhotos />
                 </div>
                 <div className="rightSection">
@@ -75,6 +130,11 @@ const Profile = () => {
                     <Posts />
                 </div>
             </div>
+            {/* {showDiv ? (
+                <div className="epDiv" > 
+                    <EditProfile />
+                </div>
+            ) : null} */}
         </div>
     )
 }

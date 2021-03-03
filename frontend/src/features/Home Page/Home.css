@@ -56,6 +56,27 @@ table {
 .leftSide {
     width: 340px;
 }
+.rightSide {
+    width: 300px;
+    display: flex;
+    flex-direction: column;
+    padding-top: 20px;
+}
+#lobutton {
+    border: solid 1px #c958f5;
+    background-color: #c958f5;
+    color: white;
+    font-family: arial, sans-serif;
+    font-style: normal;
+    font-size: larger;
+    width: 200px;
+    border-radius: 4px;
+    margin-left: 120px;
+}
+#lobutton:hover {
+    background-color: #a31ef7;
+    cursor: pointer;
+}
 #option {
     display: flex;
     justify-content: flex-start;
@@ -71,9 +92,14 @@ table {
 }
 #option > h5 {
     margin-left: 10px;
+    font-family: arial, sans-serif;
+    font-style: normal;
+    font-weight: 500;
+    color: black;
 }
 #option:hover {
     background-color: #e5e7eb;
+    cursor: pointer;
 }
 
 /* MIDDLE COMPONENT CSS */

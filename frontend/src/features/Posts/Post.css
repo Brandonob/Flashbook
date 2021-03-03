@@ -48,18 +48,89 @@ table {
 /* .postContainer {
 	
 } */
+/* .postContainer {
+	border-radius: 10px;
+	background-color: white;
+    width: 88%;
+} */
 .post {
 	background-color: white;
     border-radius: 10px;
-    width: 88%;
-    margin: 15px;
-    padding: 15px;
+    width: 92.5%;
+	margin: 15px;
+	box-shadow: 0 0 1rem 0 rgba(0, 0, 0, 0.2);
 }
 .infoSection {
 	display: flex;
     align-items: center;
+    padding-top: 15px;
+    padding-left: 15px;
+    padding-right: 15px;
+
+}
+.infoSection > h5 {
+	font-family: arial, sans-serif;
+    font-style: normal;
+    font-weight: 500;
+    color: black;
+}
+.bodySection {
+	margin-top: 10px;
+    margin-bottom: 10px;
+    padding-left: 15px;
+    padding-right: 15px;
+}
+.bodySection > p {
+	font-family: arial, sans-serif;
+    font-style: normal;
+    font-weight: 400;
+    color: black;
 }
 #postImage {
-	width: 600px;
-    height: 550px;
+	width: -webkit-fill-available;
+    padding: 40px;
+}
+#postsAvatar {
+	height: 40px;
+	width: 40px;
+	margin-right: 10px;
+}
+#name {
+	font-family: arial, sans-serif;
+    font-style: normal;
+    font-weight: 600;
+    color: black;
+}
+.pMediaSection {
+	display: flex;
+    justify-content: center;
+    background-color: #313030;
+}
+.pButtonsSection {
+	display: flex;
+    justify-content: space-around;
+    align-items: center;
+    margin-top: 10px;
+    margin-left: 15px;
+    margin-right: 15px;
+    border-top: solid 1px #bdbdbd;
+}
+.pButtonsSection > section {
+	display: flex;
+    align-items: center;
+    width: 190px;
+    justify-content: center;
+    border-radius: 6px;
+    height: 40px;
+}
+.pButtonsSection > section:hover {
+	background-color: #e5e7eb;
+	cursor: pointer;
+}
+.likeSection {
+	display: flex;
+    align-items: center;
+}
+#likeImg {
+	height: 35px;
 }

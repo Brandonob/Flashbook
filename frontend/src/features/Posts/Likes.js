@@ -68,8 +68,8 @@ const Likes = ({id}) => {
                     <h6>{likes.length}</h6>
                 </section>
             ) : null}
-            <section onClick={handleLike}>
-                <img alt="" src={likeImage} />
+            <section className="likeSection" onClick={handleLike}>
+                <img id="likeImg" alt="" src={likeImage} />
                 <h6>Like</h6>
             </section>
         </>

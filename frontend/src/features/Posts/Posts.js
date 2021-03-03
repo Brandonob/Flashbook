@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { useSelector } from 'react-redux'
 import { selectPosts } from './postsSlice'
 import { selectInfo } from '../Users/usersSlice'
@@ -7,6 +7,8 @@ import Likes from './Likes'
 import './Post.css'
 
 const Posts = () => {
+    // const [likes, setLikes] = useState([]);
+
     const posts = useSelector(selectPosts)
     const info = useSelector(selectInfo)
     // debugger
@@ -19,10 +21,11 @@ const Posts = () => {
                 return (
                     <div className="post" key={post.id}>
                         <section className="infoSection">
-                            <Avatar id="avatar" alt="John Doe" src={post.profile_pic} >J</Avatar>
-                            <h5>{post.first_name}{post.last_name}</h5>
+                            <Avatar id="postsAvatar" alt="John Doe" src={post.profile_pic} >J</Avatar>
+                            <h5 id="name" >{post.first_name} {post.last_name}</h5>
+                            <h5>{post.timestamp}</h5>
                         </section>
-                        <section>
+                        <section className="bodySection">
                             <p>{post.body}</p>
                         </section>
                         {post.post_image_url ? (
@@ -31,7 +34,7 @@ const Posts = () => {
                             </section>
                         ) : null}
                         <section className="pButtonsSection">
-                            <Likes id={post.id}/>
+                            <Likes id={post.id} />
                             <section>
                                 <h6>Comment</h6>
                             </section>

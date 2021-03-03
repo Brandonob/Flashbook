@@ -19,7 +19,7 @@ const SignupForm = ({setShowDiv}) => {
     const [errMessage, setErrMessage] = useState("");
     const [gender, setGender] = useState("")
     const [startDate, setStartDate] = useState(new Date());
-    
+
     const API = getAPI();
     const dispatch = useDispatch();
     const history = useHistory();
@@ -38,6 +38,7 @@ const SignupForm = ({setShowDiv}) => {
                 last_name: lastName,
                 email_address: email,
                 profile_pic: defaultAvatar,
+                cover_pic: "",
                 dob: startDate,
                 gender: gender
               });

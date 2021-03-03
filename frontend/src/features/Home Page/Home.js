@@ -43,8 +43,8 @@ const Home = () => {
                 <Posts/>
             </div>
             <div className="rightSide">
-                <h1>Contacts</h1>
-                <button onClick={handleClick}>Log Out</button>
+                
+                <button id="lobutton" onClick={handleClick}>Log Out</button>
             </div>
         </div>
     )

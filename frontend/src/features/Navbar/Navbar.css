@@ -73,22 +73,20 @@ table {
 }
 .userSection {
     display: flex;
-    justify-content: center;
-    align-items: center;
     margin-right: 15px;
     border-radius: 30px;
     height: 26px;
     width: fit-content;
     padding: 4px;
 }
-.userSection > p {
+.userSection > a > p {
     margin-left: 8px;
+    color: black;
 }
-
-
-.center > section > a > img {
-    height: 50px;
-
+#link {
+    display: flex;
+    align-items: center;
+    text-decoration: none;
 }
 .center > section {
     width: inherit;
@@ -96,8 +94,12 @@ table {
     justify-content: center;
     border-radius: 4px;
 }
+#navIcon {
+    height: 50px;
+}
 .center > section:hover {
     background-color: #e5e7eb;
+    cursor: pointer;
 }
 /* .right > section > img {
     height: 40px;
@@ -119,6 +121,7 @@ table {
 }
 .right > section:hover {
     background-color: #e5e7eb;
+    cursor: pointer;
 }
 #searchBar {
     height: 38px;
