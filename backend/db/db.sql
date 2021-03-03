@@ -1,7 +1,7 @@
-DROP DATABASE IF EXISTS flashbook_db;
-CREATE DATABASE flashbook_db;
+-- DROP DATABASE IF EXISTS flashbook_db;
+-- CREATE DATABASE flashbook_db;
 
-\c flashbook_db;
+-- \c flashbook_db;
 
 DROP TABLE IF EXISTS users;
 DROP TABLE IF EXISTS posts;
