@@ -111,7 +111,7 @@ const PostBuilder = ({setShowDiv}) => {
                 </section>
             </section>
             <section className="uinfoSection">
-                <Avatar id="pbAvatar" alt="John Doe" src="">J</Avatar>
+                <Avatar id="pbAvatar" alt="John Doe" src={userInfo.profile_pic}>J</Avatar>
                 <h5>{userInfo.first_name} {userInfo.last_name}</h5>
             </section>
             <form onSubmit={handleUpload}>

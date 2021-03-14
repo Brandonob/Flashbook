@@ -26,7 +26,7 @@ const LeftContainer = () => {
         <div className="leftHud">
             <Link to="/profile" style={{ textDecoration: "none" }}>
                 <section id="option">
-                        <Avatar alt="John Doe" src="" className="avatar" >J</Avatar>
+                        <Avatar alt="John Doe" src={info.profile_pic} className="avatar" >J</Avatar>
                         <h5>{info.first_name} {info.last_name}</h5>
                 </section>
             </Link>

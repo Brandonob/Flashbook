@@ -26,7 +26,7 @@ const CreatePost = () => {
     return (
         <div className="createPostDiv">
             <section className="inputSection">
-                <Avatar alt="John Doe" src="" className="avatar" >J</Avatar>
+                <Avatar alt="John Doe" src={userInfo.profile_pic} className="avatar" >J</Avatar>
                 <input type="text" placeholder={inputPlaceholder} onClick={handleInputClick}/>
             </section>
             <section className="postFeatures">

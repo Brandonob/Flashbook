@@ -79,7 +79,7 @@ const NavBar = () => {
             <div className="right">
                 <section className="userSection" onClick={handleAvatar}>
                     <Link id="link" to="/home">
-                        <Avatar id="avatar" alt="John Doe" src="" >J</Avatar>
+                        <Avatar id="avatar" alt="John Doe" src={info.profile_pic} >J</Avatar>
                         <p>{info.first_name}</p>
                     </Link>
                 </section>

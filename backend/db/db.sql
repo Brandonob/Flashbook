@@ -1,12 +1,12 @@
-DROP DATABASE IF EXISTS flashbook_db;
-CREATE DATABASE flashbook_db;
+-- DROP DATABASE IF EXISTS flashbook_db;
+-- CREATE DATABASE flashbook_db;
 
-\c flashbook_db;
+-- \c flashbook_db;
 
-DROP TABLE IF EXISTS users;
-DROP TABLE IF EXISTS posts;
-DROP TABLE IF EXISTS likes;
-DROP TABLE IF EXISTS comments;
+DROP TABLE IF EXISTS users CASCADE;
+DROP TABLE IF EXISTS posts CASCADE;
+DROP TABLE IF EXISTS likes CASCADE;
+DROP TABLE IF EXISTS comments CASCADE;
 -- Bonus: DROP TABLE IF EXISTS groups;
 
 CREATE TABLE users
