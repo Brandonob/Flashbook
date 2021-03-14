@@ -50,6 +50,9 @@ table {
     display: flex;
     justify-content: center;
 }
+.profileHeader > label {
+    display: contents;
+}
 .imageDiv {
     background-color: #c958f5;
     width: 940px;
@@ -162,15 +165,53 @@ table {
 	position: absolute;
 	z-index: -1;
 }
-.photosDiv {
+#coverpicInput{
+    width: 0.1px;
+	height: 0.1px;
+	opacity: 0;
+	overflow: hidden;
+	position: absolute;
+	z-index: -1;
+}
+.profilePhotosDiv {
     display: flex;
-    justify-content: space-between;
-    /* margin: 15px; */
+    flex-direction: column;
     box-shadow: 0 0 1rem 0 rgba(0, 0, 0, 0.2);
     background-color: white;
-    height: 350px;
+    height: fit-content;
     border-radius: 10px;
     padding: 10px;
+}
+.photoHeader {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 10px;
+}
+.photoHeader > h1 {
+    font-family: arial, sans-serif;
+    font-style: normal;
+    color: black;
+    font-weight: 900;
+    font-size: larger;
+}
+.photoHeader > h3 {
+    font-family: arial, sans-serif;
+    font-style: normal;
+    color: #c958f5;
+    font-size: large;
+}
+.photoHeader > h3:hover {
+    cursor: pointer;
+    
+}
+.photoSection {
+    height: inherit;
+    border-radius: 10px;
+    border: 1px solid #f5f2f2;
+    z-index: 1;
+    display: flex;
+    flex-wrap: wrap;
+    /* justify-content: space-between; */
 }
 .photosDiv > h1 {
     font-family: arial, sans-serif;
@@ -182,4 +223,15 @@ table {
     font-family: arial, sans-serif;
     font-style: normal;
     color: black;
+}
+#photoSectionImg {
+    width: 100px;
+    height: 100px;
+    margin: 4px;
+}
+#photoMessage {
+    font-family: arial, sans-serif;
+    font-style: normal;
+    color: black;
+    font-weight: 400;
 }

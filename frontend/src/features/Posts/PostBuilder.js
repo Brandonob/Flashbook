@@ -63,8 +63,10 @@ const PostBuilder = ({setShowDiv}) => {
                                     post_image_url: url,
                                     body: inputText
                                 })
+                                debugger
                                 let newPost = res.data.body.single_post
                                 handleNewPost(newPost)
+                                CustomToast("Post has been created!")
                                 console.log(newPost); 
                             } catch (error) {
                                 console.log(error.message);
@@ -81,6 +83,7 @@ const PostBuilder = ({setShowDiv}) => {
                     post_image_url: "",
                     body: inputText
                 })
+                CustomToast("Post has been created!")
             } catch (error) {
                 console.log(error.message);
             }

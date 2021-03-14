@@ -1,6 +1,7 @@
 import { createSlice } from '@reduxjs/toolkit'
 import axios from 'axios'
 import { getAPI } from '../Utils/Util'
+import { logOut } from '../Posts/postsSlice'
 
 const API = getAPI();
 
@@ -19,6 +20,7 @@ export const usersSlice = createSlice({
         },
         logOutUser: (state) => {
             state["currentUserId"] = ""
+            state["userInfo"] = []
         }
     }
 })

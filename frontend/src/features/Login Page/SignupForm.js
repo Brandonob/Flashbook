@@ -28,7 +28,7 @@ const SignupForm = ({setShowDiv}) => {
         try {
             e.preventDefault();
             // console.log(gender);
-            debugger
+            // debugger
             let res = await signUp(email, password)
 
             await axios.post(`${API}/users/addUser`, {
@@ -37,7 +37,7 @@ const SignupForm = ({setShowDiv}) => {
                 first_name: firstName,
                 last_name: lastName,
                 email_address: email,
-                profile_pic: defaultAvatar,
+                profile_pic: "",
                 cover_pic: "",
                 dob: startDate,
                 gender: gender

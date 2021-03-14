@@ -6,66 +6,120 @@ import ProfilePhotos from './ProfilePhotos'
 import CreatePost from '../Posts/CreatePost'
 import Posts from '../Posts/Posts'
 import firebase from "firebase/app";
-import { fetchUserPosts } from '../Posts/postsSlice'
+import { fetchUserPosts, fetchSingleUserPosts, selectSingleUPosts } from '../Posts/postsSlice'
 import { selectID, selectInfo, fetchUserInfo } from '../Users/usersSlice'
 import { useDispatch, useSelector } from 'react-redux'
 import { Toast } from '../Toastify/Toast'
+import { CustomToast } from '../Toastify/CustomToast'
 import EditProfile from './EditProfile'
 import { storage } from '../../firebase'
 import axios from 'axios'
+import { getAPI } from '../Utils/Util'
 import './Profile.css'
+// import { post } from '../../../../backend/routes/users/users'
 
 const Profile = () => {
     // const [showDiv, setShowDiv] = useState(false);
     const [pImage, setPImage] = useState("");
     const [pImageURL, setPImageURL] = useState("");
+    const [cImageURL, setCImageURL] = useState("");
+    const [userURLs, setUserURLs] = useState([]);
 
     const userId = useSelector(selectID);
-    const dispatch = useDispatch();
     const userInfo = useSelector(selectInfo);
+    const userPosts = useSelector(selectSingleUPosts)
+
+    const API = getAPI();
+    const dispatch = useDispatch();
 
     useEffect(() => {
         // console.log(userId);
         if (userId) {
-            console.log("User has successfully logged in!");
-            dispatch(fetchUserPosts(userId))
+            dispatch(fetchSingleUserPosts(userId))
+            getUserImages(userPosts)
         }
       
     }, [])
 
-    const handlepChange = e => {
-        // if (e.target.files[0]) {
-        //     setPImage(e.target.files[0])
-        // }
-        debugger
-            const image = e.target.files[0];
-            const uploadMedia = storage.ref(`images/${image.name}`).put(image);
-            uploadMedia.on(
-                "state_changed",
-                snapshot => {},
-                error => {
-                    console.log(error.message);
-                },
-                () => {
-                    storage
-                        .ref("images")
-                        .child(pImage.name)
-                        .getDownloadURL()
-                        .then(async url => {
-                            debugger
-                            setPImageURL(url)
-                            try {
-                                await axios.patch(`/users/profile_pic/${userInfo.id}`, {
-                                    profile_pic: url
-                                  });
-                                  dispatch(fetchUserInfo(userInfo.id))
-                            } catch (error) {
-                                console.log(error.message);
-                            }
-                        });
+    const getUserImages = (posts) => {
+        if(posts) {
+            let URLs = [];
+            posts.forEach(el => {
+                if(el.post_image_url) {
+                    URLs.push(el.post_image_url)
                 }
-            );
-            // CustomToast("Image selected")
+            })
+            setUserURLs(URLs)
+        }
+
+    }
+
+    const handlepChange = e => {
+        e.preventDefault();
+            let image = e.target.files[0];
+
+            if(image) {
+                CustomToast("Image selected")
+                const uploadMedia = storage.ref(`images/${image.name}`).put(image);
+                uploadMedia.on(
+                    "state_changed",
+                    snapshot => {},
+                    error => {
+                        console.log(error.message);
+                    },
+                    () => {
+                        storage
+                            .ref("images")
+                            .child(image.name)
+                            .getDownloadURL()
+                            .then(async url => {
+                                setPImageURL(url)
+                                try {
+                                    await axios.patch(`${API}/users/profile_pic/${userInfo.id}`, {
+                                        profile_pic: url
+                                      });
+                                      dispatch(fetchUserInfo(userInfo.id))
+                                } catch (error) {
+                                    console.log(error.message);
+                                }
+                            });
+                    }
+                );
+            }
+        
+    }
+    const handlecChange = e => {
+        e.preventDefault();
+            let image = e.target.files[0];
+
+            if(image) {
+                CustomToast("Image selected")
+                const uploadMedia = storage.ref(`images/${image.name}`).put(image);
+                uploadMedia.on(
+                    "state_changed",
+                    snapshot => {},
+                    error => {
+                        console.log(error.message);
+                    },
+                    () => {
+                        storage
+                            .ref("images")
+                            .child(image.name)
+                            .getDownloadURL()
+                            .then(async url => {
+                                setPImageURL(url)
+                                try {
+                                    await axios.patch(`${API}/users/cover_pic/${userInfo.id}`, {
+                                        cover_pic: url
+                                      });
+                                      dispatch(fetchUserInfo(userInfo.id))
+                                } catch (error) {
+                                    console.log(error.message);
+                                }
+                            });
+                    }
+                );
+            }
     }
 
     // const handleEditClick = (e) => {
@@ -77,9 +131,10 @@ const Profile = () => {
     return (
         <div >
             <div className="profileHeader">
-                <div className="imageDiv">
-
-                </div>
+                <input id="coverpicInput" type="file" onChange={handlecChange} />
+                <label for="coverpicInput">
+                    <div className="imageDiv" style={{ backgroundImage: `url(${userInfo.cover_pic})` }}></div>
+                </label>
                 <div className="avatarDiv">
                     <div >
                         <input id="profilepicInput" type="file" onChange={handlepChange} />
@@ -123,7 +178,7 @@ const Profile = () => {
                 <div className="leftSection">
                     {/* <ProfileIntro />
                     <ProfileFriends /> */}
-                    <ProfilePhotos />
+                    <ProfilePhotos  userURLs={userURLs} />
                 </div>
                 <div className="rightSection">
                     <CreatePost />

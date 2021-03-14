@@ -53,7 +53,7 @@ const addUser = async (req, res, next) => {
         console.log(req.body);
 
         let user = await db.one(
-            "INSERT INTO users (id, password, first_name, last_name, email_address, profile_pic, cover_pic, dob, gender) VALUES ($1, $2, $3, $4, $5, $6, $7, $8) RETURNING *",
+            "INSERT INTO users (id, password, first_name, last_name, email_address, profile_pic, cover_pic, dob, gender) VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9) RETURNING *",
             [id, password, first_name, last_name, email_address, profile_pic, cover_pic, dob, gender]
         );
         

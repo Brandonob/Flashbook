@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react'
 import { useHistory } from 'react-router-dom'
 import { useDispatch, useSelector } from 'react-redux'
-import { fetchUserPosts } from '../Posts/postsSlice'
+import { fetchUserPosts, fetchSingleUserPosts, logOutUserPosts } from '../Posts/postsSlice'
 import CreatePost from '../Posts/CreatePost'
 import './Home.css'
 import Posts from '../Posts/Posts'
@@ -19,19 +19,24 @@ const Home = () => {
         e.preventDefault();
         logout();
         dispatch(logOutUser())
+        dispatch(logOutUserPosts())
         history.push("/")
 
     }
 
     useEffect(() => {
         // console.log(userId);
-        if (userId) {
-            console.log("User has successfully logged in!");
-            dispatch(fetchUserInfo(userId))
-            dispatch(fetchUserPosts(userId))
-          }
+        firebase.auth().onAuthStateChanged((user) => {
+            if (user) {
+              console.log("User has successfully logged in!");
+              dispatch(fetchUserInfo(user.uid))
+              debugger
+              dispatch(fetchUserPosts())
+              dispatch(fetchSingleUserPosts(user.uid))
+            }
+          });
          
-    }, [])
+    }, []);
 
     return (
         <div className="home">
