@@ -19,7 +19,7 @@ export const postsSlice = createSlice({
         recieveSinglePost: (state, action) => state["allPosts"] = [action.payload, ...state], 
         recieveSingleUserPosts: (state, action) => {
             state["singleUserPosts"] = action.payload
-        },
+        } ,
         logOutUserPosts: (state, action) => {
             state["allPosts"] = []
             state["singleUserPosts"] = []
